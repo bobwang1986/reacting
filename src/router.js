@@ -1,25 +1,14 @@
-// import React from 'react'
-// import { Router, Route } from 'react-router';
-// import App from './containers/app/app'
-// import Login from './containers/login/login'
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+import App from './containers/app/app';
 
-// export default () => {
-//   return (
-//     <Router>
-//       <Route path="/" component={App}/>
-//       <Route path="/login" component={Login}/>
-//     </Router>
-//   )
-// }
-
-import React from 'react';
-import { Route } from 'react-router';
-
-import App from './containers/app/app'
-import Login from './containers/login/login'
-
-export default (
-  <Route path="/" component={App}>
-    <Route component={Login}/>
-  </Route>
-);
+const routers = () => (
+  <Router>
+      <Route path="/" component={App}/>
+  </Router>
+)
+export default routers
