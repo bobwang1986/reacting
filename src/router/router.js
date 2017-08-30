@@ -10,11 +10,10 @@ import Login from '../containers/Login';
 
 const Routers = () => (
   <Router>
-      <Route path="/" component={App}>
-          <Route path="/login" component={Login}>
-            
-          </Route>
-      </Route>
+    <div>
+      <Route exact path="/" component={App}> </Route>
+      <Route path="/login" component={Login}></Route>
+    </div>
   </Router>
 )
 export default Routers
