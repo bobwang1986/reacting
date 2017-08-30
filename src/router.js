@@ -1,14 +1,13 @@
 import React from 'react'
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 import App from './containers/app/app';
 
-const routers = () => (
-  <Router>
-      <Route path="/" component={App}/>
-  </Router>
+const Routers = () => (
+    <Router>
+        <Route exact path="/" component={App} />
+    </Router>
 )
-export default routers
+export default Routers
