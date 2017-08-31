@@ -1,15 +1,18 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Login from '../components/login/login'
-import * as loginActions from '../actions/login'
+import * as loginAction from '../actions/login'
+
+
 function mapStateToProps(state) {
   return {
         userName: state.userName,
-        Password: state.Password
+        password: state.password
     }
 }
+
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(loginActions, dispatch)
+  return bindActionCreators(loginAction, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,9 +1,7 @@
 import React from 'react'
 import {
   BrowserRouter as Router,
-  Route,
-  Link,
-  HashRouter
+  Route
 } from 'react-router-dom'
 import App from '../components/app/app';
 import Login from '../containers/Login';
