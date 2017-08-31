@@ -9,7 +9,7 @@ import Login from '../containers/Login';
 const Routers = () => (
   <Router>
     <div>
-      <Route exact path="/" component={App}> </Route>
+      <Route exact path="/" component={App}></Route>
       <Route path="/login" component={Login}></Route>
     </div>
   </Router>

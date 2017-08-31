@@ -5,10 +5,11 @@ import * as loginAction from '../actions/login'
 
 
 function mapStateToProps(state) {
+  const { userName, password } = state.login;
   return {
-        userName: state.userName,
-        password: state.password
-    }
+        userName,
+        password
+  }
 }
 
 function mapDispatchToProps(dispatch) {

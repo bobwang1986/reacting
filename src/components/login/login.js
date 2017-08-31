@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-
 class Login extends Component {
+  
   render() {
-    const { userName, password, submit } = this.props;
-    console.log(this.props);
+    const { userName, password, submit, history } = this.props;
+
     return (
       <div className="LoginContainer">
-           bbb:{userName}
-            name:<input type='text' />
-            password:<input type='password' />
+            name:<input type='text' value={userName} readOnly />
+            {' '}
+            password:<input type='text' value={password} readOnly />
+            {' '}
             <button onClick={submit}>show user info</button>
+            <button onClick={history.goBack}>Go Back</button>
       </div>
     );
   }

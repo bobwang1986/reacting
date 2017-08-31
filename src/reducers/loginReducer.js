@@ -3,7 +3,7 @@ const initialState = {userName: 'leo', password: '123456'}
 const login = (state = initialState, action) => {
     switch (action.type) {
         case ON_SUBMIMT:
-            return {...state, userName: 'aaa' }
+            return {...state, userName: 'Bob', password: '6666666' }
         default:
             return state
     }
