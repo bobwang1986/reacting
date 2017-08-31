@@ -1,5 +1,5 @@
 export const ON_SUBMIMT = 'ON_SUBMIMT'
-export function submit() {
+export const submit = () => {
   return {
     type: ON_SUBMIMT
   }
