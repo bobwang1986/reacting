@@ -1,19 +1,23 @@
-import { bindActionCreators } from 'redux'
+//import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Login from '../components/login/login'
-import * as loginAction from '../actions/login'
+import { submit } from '../actions/login'
 
 
-function mapStateToProps(state) {
-  const { userName, password } = state.login;
+const mapStateToProps = (state) => {
   return {
-        userName,
-        password
+    userName: state.login.userName,
+    password: state.login.password
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(loginAction, dispatch)
-}
+const mapDispatchToProps = (dispatch) => ({
+    fn: {
+      onFetch: () => {
+        dispatch(submit());
+      }
+    }
+  }
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
