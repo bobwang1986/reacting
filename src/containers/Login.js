@@ -7,7 +7,8 @@ import { submit } from '../actions/login'
 const mapStateToProps = (state) => {
   return {
     userName: state.login.userName,
-    password: state.login.password
+    password: state.login.password,
+    payload: state.login.payload
   }
 }
 
