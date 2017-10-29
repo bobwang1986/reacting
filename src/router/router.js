@@ -6,6 +6,8 @@ import {
 import App from '../views/app/'
 import Login from '../views/login/'
 import Home from '../views/home/'
+import AddVotes from '../views/addVotes/'
+import Report from '../views/report/'
 
 const Routers = () => (
   <Router>
@@ -13,6 +15,8 @@ const Routers = () => (
       <Route exact path="/" component={App}></Route>
       <Route path="/login" component={Login}></Route>
       <Route path="/home" component={Home}></Route>
+      <Route path="/AddVotes" component={AddVotes}></Route>
+      <Route path="/Report" component={Report}></Route>
     </div>
   </Router>
 )

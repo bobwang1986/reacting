@@ -26,12 +26,20 @@ class Home extends Component {
     // This binding is necessary to make `this` work in the callback
     this.logout = this.logout.bind(this);
     this.search = this.search.bind(this);
+    this.goToAdd = this.goToAdd.bind(this);
+    this.getReport = this.getReport.bind(this);
   }
   logout = ()=>{
     this.props.history.push("/login")
   }
   search = ()=>{
     alert('clicked');
+  }
+  goToAdd = ()=>{
+    this.props.history.push("/addVotes")
+  }
+  getReport = ()=>{
+    this.props.history.push("/report")
   }
   handleChange = (event, index, value) => this.setState({value});
   render() {
@@ -53,12 +61,13 @@ class Home extends Component {
           </span>
         </div>
         <div className='home-table'>
+          <RaisedButton label="新增投票" labelStyle={styles} onClick={this.goToAdd}/>
           <Table>
               <TableHeader>
                 <TableRow>
                   <TableHeaderColumn>ID</TableHeaderColumn>
-                  <TableHeaderColumn>VoteContent</TableHeaderColumn>
-                  <TableHeaderColumn>Operation</TableHeaderColumn>
+                  <TableHeaderColumn>投票内容</TableHeaderColumn>
+                  <TableHeaderColumn>操作</TableHeaderColumn>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -66,7 +75,7 @@ class Home extends Component {
                   <TableRowColumn>1</TableRowColumn>
                   <TableRowColumn>你了解全栈开发吗</TableRowColumn>
                   <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles}/>
+                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
                     &nbsp;
                     <RaisedButton label="编辑" labelStyle={styles}/>
                   </TableRowColumn>
@@ -75,7 +84,7 @@ class Home extends Component {
                   <TableRowColumn>2</TableRowColumn>
                   <TableRowColumn>你了解全栈开发吗</TableRowColumn>
                   <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles}/>
+                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
                     &nbsp;
                     <RaisedButton label="编辑" labelStyle={styles}/>
                   </TableRowColumn>
@@ -84,7 +93,7 @@ class Home extends Component {
                   <TableRowColumn>3</TableRowColumn>
                   <TableRowColumn>你了解做饭技巧吗</TableRowColumn>
                   <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles}/>
+                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
                     &nbsp;
                     <RaisedButton label="编辑" labelStyle={styles}/>
                   </TableRowColumn>
@@ -93,7 +102,7 @@ class Home extends Component {
                   <TableRowColumn>4</TableRowColumn>
                   <TableRowColumn>你愿意走怎样的发展路线</TableRowColumn>
                   <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles}/>
+                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
                     &nbsp;
                     <RaisedButton label="编辑" labelStyle={styles}/>
                   </TableRowColumn>
