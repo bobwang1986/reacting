@@ -17,16 +17,17 @@ class Login extends Component {
   render() {
     const { userName, password, fn, history,payload } = this.props;
     const paperStyle = {
-      height: 200,
-      width: 200,
+      height: 300,
+      width: 300,
       margin: 20,
       display: 'inline-block',
       padding:20
     };
     return (
-      <div className='Login-container'>
+      <div className='login-container'>
         <div className='login-box'>
           <Paper style={paperStyle} zDepth={5}>
+            <h2>RM小助手管理端</h2>
             <TextField
               hintText="用户名"
               fullWidth={true}
@@ -38,7 +39,7 @@ class Login extends Component {
               fullWidth={true}
               style={styles}
             />
-            <div>
+            <div className='button'>
               <RaisedButton label="登录" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
             </div>
           </Paper>
