@@ -1,31 +1,48 @@
-import React, { Component } from 'react';
-class Login extends Component {
+import React, { Component } from 'react'
+import Paper from 'material-ui/Paper'
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
+import styles from '../../../themes/commonUIStyle'
+import './styles.css'
 
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    // This binding is necessary to make `this` work in the callback
+    this.goToHome = this.goToHome.bind(this);
+  }
+  goToHome = ()=>{
+    this.props.history.push("/")
+  }
   render() {
     const { userName, password, fn, history,payload } = this.props;
-    console.log(this.props);
-
+    const paperStyle = {
+      height: 200,
+      width: 200,
+      margin: 20,
+      display: 'inline-block',
+      padding:20
+    };
     return (
-      <div className="LoginContainer">
-            name:<input type='text' value={userName} readOnly />
-            {' '}
-            password:<input type='text' value={password} readOnly />
-            {' '}
-            <button onClick={fn.onFetch}>show user info</button>
-            <button onClick={history.goBack}>Go Back</button>
-            <table>
-                <tbody>
-                  {
-                    payload && payload.map(function(item,index){
-                      return (
-                        <tr key={index}>
-                          <td>{item.userName}</td><td>{item.password}</td>
-                        </tr>
-                        )
-                      })
-                  }
-              </tbody>
-             </table>
+      <div className='Login-container'>
+        <div className='login-box'>
+          <Paper style={paperStyle} zDepth={5}>
+            <TextField
+              hintText="用户名"
+              fullWidth={true}
+              style={styles}
+            />
+            <TextField
+              hintText="密码"
+              type="password"
+              fullWidth={true}
+              style={styles}
+            />
+            <div>
+              <RaisedButton label="登录" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
+            </div>
+          </Paper>
+        </div>
 
       </div>
     );
