@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 class Login extends Component {
-  
+
   render() {
     const { userName, password, fn, history,payload } = this.props;
     console.log(this.props);
- 
+
     return (
       <div className="LoginContainer">
             name:<input type='text' value={userName} readOnly />
@@ -21,12 +21,12 @@ class Login extends Component {
                         <tr key={index}>
                           <td>{item.userName}</td><td>{item.password}</td>
                         </tr>
-                        ) 
+                        )
                       })
                   }
               </tbody>
              </table>
-            
+
       </div>
     );
   }

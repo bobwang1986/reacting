@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Routers from './router/router';
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
-import DevTools from './containers/DevTools';
+import DevTools from './config/DevTools';
 const store = configureStore()
 
 render(

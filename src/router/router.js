@@ -3,8 +3,8 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import App from '../components/app/app';
-import Login from '../containers/Login';
+import App from '../views/app/';
+import Login from '../views/login/';
 
 const Routers = () => (
   <Router>
