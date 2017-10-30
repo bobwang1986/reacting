@@ -12,7 +12,7 @@ import Report from '../views/report/'
 const Routers = () => (
   <Router>
     <div>
-      <Route exact path="/" component={App}></Route>
+      <Route exact path="/" component={Login}></Route>
       <Route path="/login" component={Login}></Route>
       <Route path="/home" component={Home}></Route>
       <Route path="/AddVotes" component={AddVotes}></Route>

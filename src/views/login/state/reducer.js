@@ -1,9 +1,9 @@
 import { ON_SUBMIMT } from './action'
-const initialState = {userName: 'leo', password: '123456'}
+const initialState = {}
 const login = (state = initialState, action) => {
     switch (action.type) {
         case ON_SUBMIMT:
-            return {...state, payload:action.payload}
+            return {...state, payload:action.response}
         default:
             return state
     }

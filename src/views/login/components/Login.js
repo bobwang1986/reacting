@@ -12,10 +12,12 @@ class Login extends Component {
     this.goToHome = this.goToHome.bind(this);
   }
   goToHome = ()=>{
+    console.log(this.props);
+    //this.props.submit();
     this.props.history.push("/home")
   }
   render() {
-    const { userName, password, fn,payload } = this.props;
+    const {} = this.props;
     const paperStyle = {
       height: 300,
       width: 300,
