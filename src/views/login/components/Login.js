@@ -13,8 +13,13 @@ class Login extends Component {
   }
   goToHome = ()=>{
     console.log(this.props);
-    //this.props.submit();
-    this.props.history.push("/home")
+    const userInfo = {
+      userName: this.refs.userName.getValue(),
+      password: this.refs.password.getValue()
+    };
+    console.log(userInfo);
+    this.props.submit(userInfo);
+    //this.props.history.push("/home")
   }
   render() {
     const {} = this.props;
@@ -34,12 +39,14 @@ class Login extends Component {
               hintText="用户名"
               fullWidth={true}
               style={styles}
+              ref="userName"
             />
             <TextField
               hintText="密码"
               type="password"
               fullWidth={true}
               style={styles}
+              ref="password"
             />
             <div className='button'>
               <RaisedButton label="登录" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
