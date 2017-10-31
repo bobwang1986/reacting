@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import md5 from 'js-md5'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
@@ -12,13 +13,11 @@ class Login extends Component {
     this.goToHome = this.goToHome.bind(this);
   }
   goToHome = ()=>{
-    console.log(this.props);
     const userInfo = {
       userName: this.refs.userName.getValue(),
-      password: this.refs.password.getValue()
+      password: md5(this.refs.password.getValue())
     };
-    console.log(userInfo);
-    this.props.submit(userInfo);
+    this.props.submit(userInfo, this.props);
     //this.props.history.push("/home")
   }
   render() {

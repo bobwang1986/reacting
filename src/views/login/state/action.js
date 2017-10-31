@@ -1,24 +1,18 @@
-import fetch from 'isomorphic-fetch'
-import MD5 from 'md5'
+import axios from 'axios'
 
 export const ON_SUBMIMT = 'ON_SUBMIMT';
-
-export const submit = (userInfo) => {
+export const submit = (userInfo, router) => {
   return (dispatch) => {
-    fetch('http://localhost:4000/authorize', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        "staffId": "1",
-        "password": MD5("1")
-      })
-    }).then(
-      response => response.json()
-      ).then((response) => {
-        console.log(response)
-        dispatch({ type: ON_SUBMIMT, payload: response });
-      }).catch(error => console.log(error))
+    axios.post("http://localhost:3000/authorize",{
+        "staffId": userInfo.userName,
+        "password": "21232F297A57A5A743894A0E4A801FC3"
+    }).then(function(response){
+      console.log(response.data);
+      dispatch({ type: ON_SUBMIMT, payload: response.data });
+      router.history.push("/home")
+    })
+    .catch(function(err){
+      console.log(err);
+    });
   }
-} 
+}  
