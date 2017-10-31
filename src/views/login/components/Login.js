@@ -15,7 +15,7 @@ class Login extends Component {
   goToHome = ()=>{
     const userInfo = {
       userName: this.refs.userName.getValue(),
-      password: md5(this.refs.password.getValue())
+      password: md5(this.refs.password.getValue()).toUpperCase()
     };
     this.props.submit(userInfo, this.props);
     //this.props.history.push("/home")
@@ -33,7 +33,7 @@ class Login extends Component {
       <div className='login-container'>
         <div className='login-box'>
           <Paper style={paperStyle} zDepth={5}>
-            <h2>RM小助手管理端</h2>
+            <h2>MiniOA</h2>
             <TextField
               hintText="用户名"
               fullWidth={true}

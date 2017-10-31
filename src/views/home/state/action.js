@@ -1,14 +1,14 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const ON_SUBMIMT = 'ON_SUBMIMT';
-
-export const submit = () => {
+export const GET_VOTELIST = 'GET_VOTELIST';
+export const getVoteList = () => {
   return (dispatch) => {
-    axios.get('http://localhost:3000/user').then(function (response) {
-      console.log(response);
-      dispatch({type: ON_SUBMIMT, payload: response.data})
-    }).catch(function (error) {
-      console.log(error);
+    axios.get("http://localhost:3001/votes").then(function(response){
+      console.log(response.data);
+      dispatch({ type: GET_VOTELIST, payload: response.data });
+    })
+    .catch(function(err){
+      console.log(err);
     });
   }
- }
+}  

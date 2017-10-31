@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
+import style from 'material-ui/styles'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
+import './styles.css'
 import {
   Toolbar,
   ToolbarGroup,
@@ -16,7 +18,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-
+import FlatButton from 'material-ui/FlatButton';
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
@@ -42,12 +44,20 @@ class Home extends Component {
     this.props.history.push("/report")
   }
   handleChange = (event, index, value) => this.setState({value});
+
+  componentDidMount() {
+      this.props.getVoteList()
+  }
+
   render() {
+    console.log('dasfdsafdsafdsa');
+    console.log(this.props.voteList);
+    const voteList = this.props.voteList;
     return (
       <div className='home-container'>
         <Toolbar>
           <ToolbarGroup firstChild={true}>
-            <h2 className='home-title'>RM小助手管理端</h2>
+            <h2 className='home-title'>MiniOA</h2>
           </ToolbarGroup>
           <ToolbarGroup>
             <RaisedButton label="退出" labelStyle={styles} onClick={this.logout}/>
@@ -55,58 +65,37 @@ class Home extends Component {
         </Toolbar>
         <div className='home-content'>
         <div className='home-search'>
-          <TextField hintText="输入关键字进行查询"/>
+          <TextField hintText="Key words"/>
           <span className='button'>
-            <RaisedButton label="查询" labelStyle={styles} onClick={this.search}/>
+            <RaisedButton label="Search" primary={true} style={style} onClick={this.search} />
           </span>
         </div>
         <div className='home-table'>
-          <RaisedButton label="新增投票" labelStyle={styles} onClick={this.goToAdd}/>
+          <RaisedButton label="Add" primary={true} style={style} onClick={this.goToAdd} />
           <Table>
               <TableHeader>
                 <TableRow>
                   <TableHeaderColumn>ID</TableHeaderColumn>
-                  <TableHeaderColumn>投票内容</TableHeaderColumn>
+                  <TableHeaderColumn>主题</TableHeaderColumn>
+                  <TableHeaderColumn>已投票数</TableHeaderColumn>
                   <TableHeaderColumn>操作</TableHeaderColumn>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
-                  <TableRowColumn>1</TableRowColumn>
-                  <TableRowColumn>你了解全栈开发吗</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>2</TableRowColumn>
-                  <TableRowColumn>你了解全栈开发吗</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>3</TableRowColumn>
-                  <TableRowColumn>你了解做饭技巧吗</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>4</TableRowColumn>
-                  <TableRowColumn>你愿意走怎样的发展路线</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
+                {
+                  voteList && voteList.map((item, key) => {
+                    return <TableRow key={key}><TableRowColumn>{key+1}</TableRowColumn>
+                      <TableRowColumn>{item.title}</TableRowColumn>
+                      <TableRowColumn>{item.voters.length}</TableRowColumn>
+                      <TableRowColumn>
+                        <FlatButton label="Result" primary={true} onClick={this.getReport}/>
+                        <FlatButton label="Edit" secondary={true} />
+                        <FlatButton label="Del" disabled={false} />
+
+                      </TableRowColumn>
+                    </TableRow>
+                  })
+                }
               </TableBody>
             </Table>
           </div>

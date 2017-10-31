@@ -5,7 +5,7 @@ export const submit = (userInfo, router) => {
   return (dispatch) => {
     axios.post("http://localhost:3000/authorize",{
         "staffId": userInfo.userName,
-        "password": "21232F297A57A5A743894A0E4A801FC3"
+        "password": userInfo.password//"21232F297A57A5A743894A0E4A801FC3"
     }).then(function(response){
       console.log(response.data);
       dispatch({ type: ON_SUBMIMT, payload: response.data });
