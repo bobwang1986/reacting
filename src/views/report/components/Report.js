@@ -23,36 +23,74 @@ class Report extends Component {
     this.props.history.push("/home")
   }
   componentDidMount() {
+    const {voteID, voteList} = this.props.voteID;
+    let des = [];
+    let title;
+    let voters=[];
+    voteList.map((item, key) => {
+      if(item._id == voteID){
+        console.log(item);
+        title = item.title;
+        item.items.map((v, i) => {
+          voters.push(v.voters.length)
+          des.push(v.description)
+        })
+      }
+    })
     // 基于准备好的dom，初始化echarts实例
-    const voteID = this.props.voteID;
-    
-    const _this = this;
-    setTimeout(function(){
-      const data = _this.props.getResult(voteID);
-      console.log(data);
-      const myChart = echarts.init(document.getElementById('main'));
-      // 绘制图表
-      myChart.setOption({
-          title: { text: '投票结果' },
-          tooltip: {},
-          xAxis: {
-              data: [5, 20, 36, 10, 10, 20]
-          },
-          yAxis: {},
-          series: [{
-              name: '投票数量',
-              type: 'bar',
-              data: [5, 20, 36, 10, 10, 20]
-          }]
-      });
-    },100)
+    const myChart = echarts.init(document.getElementById('main'));
+    // 绘制图表
+    myChart.setOption({
+      title : {
+          text: '投标结果',
+          subtext: title
+      },
+      tooltip : {
+          trigger: 'axis'
+      },
+      legend: {
+          data:['投票结果']
+      },
+      toolbox: {
+          show : true,
+          feature : {
+              mark : {show: true},
+              dataView : {show: true, readOnly: false},
+              magicType: {show: true, type: ['line', 'bar']},
+              restore : {show: true},
+              saveAsImage : {show: true}
+          }
+      },
+      calculable : true,
+      xAxis : [
+          {
+              type : 'value',
+              boundaryGap : [0, 1]
+          }
+      ],
+      yAxis : [
+          {
+              type : 'category',
+              data : des
+          }
+      ],
+      series : [
+          {
+              name:'结果',
+              type:'bar',
+              itemStyle: {normal: {
+                label : {show: true, position: 'right'}
+               }},
+              data: voters
+          }
+      ]
+  });
 
   }
   render() {
-    
     return (
       <div className='add-vote-container'>
-        <div id="main" style={{ width: 400, height: 400 }}></div>
+        <div id="main" style={{ width: 800, height: 400 }}></div>
         <RaisedButton label="back" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
       </div>
     );

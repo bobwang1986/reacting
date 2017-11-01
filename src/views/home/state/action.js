@@ -14,8 +14,12 @@ export const getVoteList = () => {
 } 
 
 export const VOTELIST_ID = 'VOTELIST_ID';
-export const votelistID = (id) => {
+export const votelistID = (id,list) => {
+  const data = { 
+    voteID: id,
+    voteList: list
+  }
   return (dispatch) => {
-      dispatch({ type: VOTELIST_ID, payload: id });
+      dispatch({ type: VOTELIST_ID, payload: data });
   }
 }  

@@ -112,16 +112,11 @@ class AddVotes extends Component {
           <MenuItem value={1} primaryText="多选" />
         </SelectField>
         <div className="vote-option">
-          <ul>
           {
             optionList && optionList.map((item, key) => {
-               return <li key={key}>
-                  <span className="vote-field"><TextField hintText={item.id} ref={item.id} multiLine={true} fullWidth={true}/></span>
-                  <span className="vote-del-btn"><RaisedButton  label="Del" labelStyle={styles}  onClick={()=> {this.delOption(item.id)}}/></span>
-               </li>
+               return <TextField key={key} hintText={item.id} ref={item.id} multiLine={true} fullWidth={true}/>
             })
           }
-          </ul>
         </div>
 
         <div className='button add-vote-button-add'>

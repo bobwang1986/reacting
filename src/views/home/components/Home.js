@@ -41,7 +41,7 @@ class Home extends Component {
     this.props.history.push("/addVotes")
   }
   getReport = (id)=>{
-    this.props.votelistID(id);
+    this.props.votelistID(id,this.props.voteList);
     this.props.history.push("/report")
   }
   handleChange = (event, index, value) => this.setState({value});
