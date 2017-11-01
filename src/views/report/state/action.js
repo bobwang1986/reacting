@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const ON_SUBMIMT = 'ON_SUBMIMT';
+export const GET_RESULT = 'GET_RESULT';
 
-export const submit = () => {
+export const getResult = (voteID) => {
   return (dispatch) => {
-    axios.get('http://localhost:3000/user').then(function (response) {
-      console.log(response);
-      dispatch({type: ON_SUBMIMT, payload: response.data})
+    axios.get(`http://localhost:3001/votes/${voteID}`).then(function (response) {
+      //console.log(response.data);
+      return response.data;
     }).catch(function (error) {
       console.log(error);
     });

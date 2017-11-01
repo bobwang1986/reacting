@@ -11,4 +11,11 @@ export const getVoteList = () => {
       console.log(err);
     });
   }
+} 
+
+export const VOTELIST_ID = 'VOTELIST_ID';
+export const votelistID = (id) => {
+  return (dispatch) => {
+      dispatch({ type: VOTELIST_ID, payload: id });
+  }
 }  

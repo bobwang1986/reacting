@@ -24,23 +24,32 @@ class Report extends Component {
   }
   componentDidMount() {
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    // 绘制图表
-    myChart.setOption({
-        title: { text: '投票结果' },
-        tooltip: {},
-        xAxis: {
-            data: ["选项1", "选项2", "选项3", "选项4", "选项5", "选项6"]
-        },
-        yAxis: {},
-        series: [{
-            name: '投票数量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    });
+    const voteID = this.props.voteID;
+    
+    const _this = this;
+    setTimeout(function(){
+      const data = _this.props.getResult(voteID);
+      console.log(data);
+      const myChart = echarts.init(document.getElementById('main'));
+      // 绘制图表
+      myChart.setOption({
+          title: { text: '投票结果' },
+          tooltip: {},
+          xAxis: {
+              data: [5, 20, 36, 10, 10, 20]
+          },
+          yAxis: {},
+          series: [{
+              name: '投票数量',
+              type: 'bar',
+              data: [5, 20, 36, 10, 10, 20]
+          }]
+      });
+    },100)
+
   }
   render() {
+    
     return (
       <div className='add-vote-container'>
         <div id="main" style={{ width: 400, height: 400 }}></div>

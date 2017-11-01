@@ -1,24 +1,17 @@
-//import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Report from '../components/Report'
-import { submit } from '../state/action'
-
+import * as report from '../state/action'
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    // userName: state.login.userName,
-    // password: state.login.password,
-    // payload: state.login.payload
+    voteID: state.home.payload
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    // fn: {
-    //   onFetch: () => {
-    //     dispatch(submit());
-    //   }
-    // }
-  }
-)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(report, dispatch)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Report)

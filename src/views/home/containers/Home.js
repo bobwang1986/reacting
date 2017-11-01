@@ -7,7 +7,8 @@ import * as home from '../state/action'
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    voteList: state.home.payload
+    voteList: state.home.payload,
+    voteListID: state.home.payload
   }
 }
 

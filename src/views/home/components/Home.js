@@ -40,7 +40,8 @@ class Home extends Component {
   goToAdd = ()=>{
     this.props.history.push("/addVotes")
   }
-  getReport = ()=>{
+  getReport = (id)=>{
+    this.props.votelistID(id);
     this.props.history.push("/report")
   }
   handleChange = (event, index, value) => this.setState({value});
@@ -51,7 +52,7 @@ class Home extends Component {
 
   render() {
     console.log('dasfdsafdsafdsa');
-    console.log(this.props.voteList);
+    console.log(this.props);
     const voteList = this.props.voteList;
     return (
       <div className='home-container'>
@@ -88,10 +89,8 @@ class Home extends Component {
                       <TableRowColumn>{item.title}</TableRowColumn>
                       <TableRowColumn>{item.voters.length}</TableRowColumn>
                       <TableRowColumn>
-                        <FlatButton label="Result" primary={true} onClick={this.getReport}/>
+                        <FlatButton label="Result" primary={true} onClick={()=>this.getReport(item._id)}/>
                         <FlatButton label="Edit" primary={true} />
-                       
-
                       </TableRowColumn>
                     </TableRow>
                   })
