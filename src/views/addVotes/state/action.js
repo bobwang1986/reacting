@@ -1,14 +1,22 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const ON_SUBMIMT = 'ON_SUBMIMT';
+export const ADD_OPTION = 'ADD_OPTION';
+export const ADD_VOTE = 'ADD_VOTE';
 
-export const submit = () => {
+export const addOption = (data) => {
   return (dispatch) => {
-    axios.get('http://localhost:3000/user').then(function (response) {
-      console.log(response);
-      dispatch({type: ON_SUBMIMT, payload: response.data})
-    }).catch(function (error) {
-      console.log(error);
+    dispatch({ type: ADD_VOTE, payload: data });
+  }
+}
+
+export const addVote = (data, router) => {
+  return (dispatch) => {
+    axios.post("http://localhost:3001/votes",data).then(function(response){
+      console.log(response.data);
+      router.history.push("/home")
+    })
+    .catch(function(err){
+      console.log(err);
     });
   }
- }
+}

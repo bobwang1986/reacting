@@ -4,3 +4,19 @@
 .add-vote-container .button{
   margin-top: 10px;
 }
+.vote-option li{
+  float: left;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+}
+
+.vote-option .vote-field{
+  width: 90%;
+}
+.vote-option .vote-del-btn{
+  width: 10%;
+}
+.vote-option span{
+  float: left;
+}

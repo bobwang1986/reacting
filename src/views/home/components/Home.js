@@ -89,8 +89,8 @@ class Home extends Component {
                       <TableRowColumn>{item.voters.length}</TableRowColumn>
                       <TableRowColumn>
                         <FlatButton label="Result" primary={true} onClick={this.getReport}/>
-                        <FlatButton label="Edit" secondary={true} />
-                        <FlatButton label="Del" disabled={false} />
+                        <FlatButton label="Edit" primary={true} />
+                       
 
                       </TableRowColumn>
                     </TableRow>
