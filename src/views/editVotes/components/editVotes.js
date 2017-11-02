@@ -7,7 +7,7 @@ import Checkbox from 'material-ui/Checkbox';
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
-class AddVotes extends Component {
+class editVotes extends Component {
   constructor(props) {
     super(props);
     // This binding is necessary to make `this` work in the callback
@@ -17,7 +17,6 @@ class AddVotes extends Component {
     this.state = {
       value: 0,
       checked:false,
-      item: [{"id":"item0"}],
       idValue: 1
     };
     this.optionStyles = {
@@ -35,11 +34,12 @@ class AddVotes extends Component {
     })
     console.log(arr);
     const data = {
+      "_id": this.props.voteID.voteID,
       "title": this.refs.title.getValue(),
       "type": this.state.value,
       "items": arr
     }
-    this.props.addVote(data,this.props)
+    this.props.editVote(data,this.props)
   }
 
   goBack(){
@@ -57,9 +57,8 @@ class AddVotes extends Component {
   }
 
   addOptions(optionList){
-     
       const items = this.state.item;
-      items.push({"id":`item${this.state.idValue}`});
+      items.push({"id":`item${this.state.idValue+1}`});
       this.setState((oldState) => {
         return {
           item: items,
@@ -84,23 +83,48 @@ class AddVotes extends Component {
     console.log(options);
   }
 
+  
   componentDidMount() {
-    this.props.addOption(this.state.default)
+    const {voteID, voteList} = this.props.voteID;
+    console.log(this.props.voteID);
+    let optionList = [];
+    voteList.map((item, key) => {
+      if(item._id === voteID){
+        item.items.map((v, i) => {
+          optionList.push({"id":`item${i+1}`,"value": v.description})
+        })
+        this.setState((oldState) => {
+          return {
+            value: item.type,
+            title: item.title,
+            item: optionList,
+            idValue: optionList.length
+          };
+        });
+        console.log(optionList)
+      }
+    })
   }
 
   render() {
     const optionList = this.state.item;
+    console.log(this.props)
     return (
       <div className='add-vote-container'>
-        <h2>添加个投票</h2>
-        <TextField
+        <h2>修改投票</h2>
+        {
+          this.state.title && <TextField
           hintText="请输入投票内容"
           floatingLabelText="投票内容"
           multiLine={true}
           rows={1}
           fullWidth={true}
           ref="title"
+          defaultValue={this.state.title}
+          //value={this.state.title}
         />
+        }
+
         <SelectField
           floatingLabelText="单选"
           value={this.state.value}
@@ -111,9 +135,9 @@ class AddVotes extends Component {
           <MenuItem value={1} primaryText="多选" />
         </SelectField>
         <div className="vote-option">
-          {
+        {
             optionList && optionList.map((item, key) => {
-               return <TextField key={key} hintText={item.id} ref={item.id} multiLine={true} fullWidth={true}/>
+               return <TextField key={key} hintText={item.id} ref={item.id} defaultValue={item.value} multiLine={true} fullWidth={true}/>
             })
           }
         </div>
@@ -134,4 +158,4 @@ class AddVotes extends Component {
   }
 }
 
-export default AddVotes;
+export default editVotes;

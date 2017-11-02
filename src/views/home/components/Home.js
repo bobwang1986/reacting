@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import Paper from 'material-ui/Paper'
 import style from 'material-ui/styles'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import './styles.css'
 import {
   Toolbar,
-  ToolbarGroup,
-  ToolbarSeparator,
-  ToolbarTitle
+  ToolbarGroup
 } from 'material-ui/Toolbar';
 import {
   Table,
@@ -30,6 +27,7 @@ class Home extends Component {
     this.search = this.search.bind(this);
     this.goToAdd = this.goToAdd.bind(this);
     this.getReport = this.getReport.bind(this);
+    this.editVote = this.editVote.bind(this);
   }
   logout = ()=>{
     this.props.history.push("/login")
@@ -46,14 +44,18 @@ class Home extends Component {
   }
   handleChange = (event, index, value) => this.setState({value});
 
+  editVote(id){
+    this.props.votelistID(id,this.props.voteList);
+    this.props.history.push("/editVotes")
+  }
+
   componentDidMount() {
       this.props.getVoteList()
   }
 
   render() {
-    console.log('dasfdsafdsafdsa');
     console.log(this.props);
-    const voteList = this.props.voteList;
+    const voteList = this.props.voteList ? this.props.voteList : [{"title": "adfa","voters":["dfsa","dfad"]}];
     return (
       <div className='home-container'>
         <Toolbar>
@@ -85,14 +87,15 @@ class Home extends Component {
               <TableBody>
                 {
                   voteList && voteList.map((item, key) => {
-                    return <TableRow key={key}><TableRowColumn>{key+1}</TableRowColumn>
-                      <TableRowColumn>{item.title}</TableRowColumn>
-                      <TableRowColumn>{item.voters.length}</TableRowColumn>
-                      <TableRowColumn>
-                        <FlatButton label="Result" primary={true} onClick={()=>this.getReport(item._id)}/>
-                        <FlatButton label="Edit" primary={true} />
-                      </TableRowColumn>
-                    </TableRow>
+                    return <TableRow key={key}>
+                              <TableRowColumn>{key+1}</TableRowColumn>
+                              <TableRowColumn>{item.title}</TableRowColumn>
+                              <TableRowColumn>{item.voters.length}</TableRowColumn>
+                              <TableRowColumn>
+                                <FlatButton label="Result" primary={true} onClick={()=>this.getReport(item._id)}/>
+                                 <FlatButton label="Edit" primary={true} onClick={()=>this.editVote(item._id)}/>
+                              </TableRowColumn>
+                           </TableRow>
                   })
                 }
               </TableBody>

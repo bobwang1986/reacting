@@ -9,7 +9,6 @@ import  'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 
-import TextField from 'material-ui/TextField'
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
@@ -17,9 +16,9 @@ class Report extends Component {
   constructor(props) {
     super(props);
     // This binding is necessary to make `this` work in the callback
-    this.goToHome = this.goToHome.bind(this);
+    this.gotHome = this.gotHome.bind(this);
   }
-  goToHome = ()=>{
+  gotHome = ()=>{
     this.props.history.push("/home")
   }
   componentDidMount() {
@@ -28,7 +27,7 @@ class Report extends Component {
     let title;
     let voters=[];
     voteList.map((item, key) => {
-      if(item._id == voteID){
+      if(item._id === voteID){
         console.log(item);
         title = item.title;
         item.items.map((v, i) => {
@@ -81,7 +80,7 @@ class Report extends Component {
               itemStyle: {normal: {
                 label : {show: true, position: 'right'}
                }},
-              data: voters
+              data: ["10","20","60"]//des
           }
       ]
   });
@@ -91,7 +90,7 @@ class Report extends Component {
     return (
       <div className='add-vote-container'>
         <div id="main" style={{ width: 800, height: 400 }}></div>
-        <RaisedButton label="back" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
+        <RaisedButton label="back" labelStyle={styles} fullWidth={true} onClick={this.gotHome}/>
       </div>
     );
   }

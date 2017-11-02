@@ -21,7 +21,6 @@ class Login extends Component {
     //this.props.history.push("/home")
   }
   render() {
-    const {} = this.props;
     const paperStyle = {
       height: 300,
       width: 300,
