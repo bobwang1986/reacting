@@ -54,8 +54,8 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props);
-    const voteList = this.props.voteList ? this.props.voteList : [{"title": "adfa","voters":["dfsa","dfad"]}];
+    const voteList = this.props.voteList ? this.props.voteList : [];
+    const  list = Array.isArray(voteList) ? voteList : voteList.voteList;
     return (
       <div className='home-container'>
         <Toolbar>
@@ -86,17 +86,17 @@ class Home extends Component {
               </TableHeader>
               <TableBody>
                 {
-                  voteList && voteList.map((item, key) => {
-                    return <TableRow key={key}>
-                              <TableRowColumn>{key+1}</TableRowColumn>
-                              <TableRowColumn>{item.title}</TableRowColumn>
-                              <TableRowColumn>{item.voters.length}</TableRowColumn>
-                              <TableRowColumn>
-                                <FlatButton label="Result" primary={true} onClick={()=>this.getReport(item._id)}/>
-                                 <FlatButton label="Edit" primary={true} onClick={()=>this.editVote(item._id)}/>
-                              </TableRowColumn>
-                           </TableRow>
-                  })
+                    list && list.map((item, key) => {
+                      return <TableRow key={key}>
+                                <TableRowColumn>{key+1}</TableRowColumn>
+                                <TableRowColumn>{item.title}</TableRowColumn>
+                                <TableRowColumn>{item.voters.length}</TableRowColumn>
+                                <TableRowColumn>
+                                  <FlatButton label="Result" primary={true} onClick={()=>this.getReport(item._id)}/>
+                                  <FlatButton label="Edit" primary={true} onClick={()=>this.editVote(item._id)}/>
+                                </TableRowColumn>
+                            </TableRow>
+                    })
                 }
               </TableBody>
             </Table>

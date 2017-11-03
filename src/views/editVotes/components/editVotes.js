@@ -30,7 +30,9 @@ class editVotes extends Component {
   goToHome() {
     let arr =[];
     this.state.item.map((value) =>{
+      if(this.refs[value.id].getValue()!=""){
         arr.push(this.refs[value.id].getValue())
+      }
     })
     console.log(arr);
     const data = {

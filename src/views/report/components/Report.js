@@ -31,6 +31,7 @@ class Report extends Component {
         console.log(item);
         title = item.title;
         item.items.map((v, i) => {
+          console.log(v.voters.length);
           voters.push(v.voters.length)
           des.push(v.description)
         })
@@ -41,8 +42,8 @@ class Report extends Component {
     // 绘制图表
     myChart.setOption({
       title : {
-          text: '投标结果',
-          subtext: title
+          text: title,
+          subtext: '投票结果'
       },
       tooltip : {
           trigger: 'axis'
@@ -80,7 +81,7 @@ class Report extends Component {
               itemStyle: {normal: {
                 label : {show: true, position: 'right'}
                }},
-              data: ["10","20","60"]//des
+              data: voters
           }
       ]
   });
