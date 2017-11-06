@@ -1,9 +1,11 @@
 import axios from 'axios'
+import config from '../../../config/config'
+
 
 export const ON_SUBMIMT = 'ON_SUBMIMT';
 export const submit = (userInfo, router) => {
   return (dispatch) => {
-    axios.post("http://localhost:3000/authorize",{
+    axios.post(`${config.user}/authorize`,{
         "staffId": userInfo.userName,
         "password": userInfo.password//"21232F297A57A5A743894A0E4A801FC3"
     }).then(function(response){
