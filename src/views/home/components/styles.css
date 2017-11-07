@@ -21,6 +21,15 @@
 .vote-btn-hide{
   display: none;
 }
+.home-option-w{
+}
 .home-option-w button{
   float: left;
+  margin-right:10px!important;
+  min-width: 0!important;
+}
+.home-option-w button span{
+  padding-left: 4px!important;
+  padding-right: 4px!important;
+  font-size: 12px!important
 }

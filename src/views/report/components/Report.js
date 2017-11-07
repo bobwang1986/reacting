@@ -26,10 +26,12 @@ class Report extends Component {
     let des = [];
     let title;
     let voters=[];
+    let votersCount;
     voteList.map((item, key) => {
       if(item._id === voteID){
         console.log(item);
         title = item.title;
+        votersCount = item.votersCount;
         item.items.map((v, i) => {
           console.log(v.voters.length);
           voters.push(v.voters.length)
@@ -43,7 +45,7 @@ class Report extends Component {
     myChart.setOption({
       title : {
           text: title,
-          subtext: '投票结果'
+          subtext: '投票总数:'+ votersCount
       },
       tooltip : {
           trigger: 'axis'

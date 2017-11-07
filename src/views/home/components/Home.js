@@ -77,21 +77,24 @@ class Home extends Component {
           </ToolbarGroup>
         </Toolbar>
         <div className='home-content'>
-        <div className='home-search'>
-          <TextField hintText="Key words"/>
-          <span className='button'>
-            <RaisedButton label="Search" primary={true} style={style} onClick={this.search} />
-          </span>
-        </div>
+          {
+            /*<div className='home-search'>
+              <TextField hintText="Key words"/>
+              <span className='button'>
+                <RaisedButton label="查询" primary={true} style={style} onClick={this.search} />
+              </span>
+            </div>
+            */
+          }
         <div className='home-table'>
-          <RaisedButton label="Add" primary={true} style={style} onClick={this.goToAdd} />
+          <RaisedButton label="新增投票" primary={true} style={style} onClick={this.goToAdd} />
           <Table>
               <TableHeader>
                 <TableRow>
                   <TableHeaderColumn>ID</TableHeaderColumn>
                   <TableHeaderColumn>主题</TableHeaderColumn>
                   <TableHeaderColumn>已投票数</TableHeaderColumn>
-                  <TableHeaderColumn>操作</TableHeaderColumn>
+                  <TableHeaderColumn className="home-option-w">操作</TableHeaderColumn>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -102,12 +105,12 @@ class Home extends Component {
                                 <TableRowColumn>{item.title}</TableRowColumn>
                                 <TableRowColumn>{item.voters.length}</TableRowColumn>
                                 <TableRowColumn className="home-option-w">
-                                  <FlatButton label="Result" primary={true} onClick={()=>this.getReport(item._id)}/>
+                                  <FlatButton label="查询结果" primary={true} onClick={()=>this.getReport(item._id)}/>
                                   <div className={item.status ? "vote-btn-hide" : "vote-btn-show" }>
-                                    <FlatButton label="Edit" primary={true} onClick={()=>this.editVote(item._id)}/>
-                                    <FlatButton label="Publish" primary={true} onClick={()=>this.releaseVote(item._id)}/>
+                                    <FlatButton label="编辑" primary={true} onClick={()=>this.editVote(item._id)}/>
+                                    <FlatButton label="发布" primary={true} onClick={()=>this.releaseVote(item._id)}/>
                                   </div>
-                                  <FlatButton label="Del" primary={true} onClick={()=>this.delVote(item._id)}/>
+                                  <FlatButton label="删除" primary={true} onClick={()=>this.delVote(item._id)}/>
                                 </TableRowColumn>
                             </TableRow>
                     })
