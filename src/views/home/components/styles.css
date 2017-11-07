@@ -14,3 +14,13 @@
 .home-content{
   padding:20px;
 }
+
+.vote-btn-show{
+  float: left
+}
+.vote-btn-hide{
+  display: none;
+}
+.home-option-w button{
+  float: left;
+}

@@ -17,7 +17,8 @@ class editVotes extends Component {
     this.state = {
       value: 0,
       checked:false,
-      idValue: 1
+      idValue: 1,
+      status: 0
     };
     this.optionStyles = {
       display:'inline-block',
@@ -85,13 +86,13 @@ class editVotes extends Component {
     console.log(options);
   }
 
-  
   componentDidMount() {
     const {voteID, voteList} = this.props.voteID;
     console.log(this.props.voteID);
     let optionList = [];
     voteList.map((item, key) => {
       if(item._id === voteID){
+        console.log(item.status)
         item.items.map((v, i) => {
           optionList.push({"id":`item${i+1}`,"value": v.description})
         })
@@ -99,6 +100,7 @@ class editVotes extends Component {
           return {
             value: item.type,
             title: item.title,
+            status: item.status,
             item: optionList,
             idValue: optionList.length
           };
@@ -110,7 +112,7 @@ class editVotes extends Component {
 
   render() {
     const optionList = this.state.item;
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className='add-vote-container'>
         <h2>修改投票</h2>
@@ -148,9 +150,9 @@ class editVotes extends Component {
           <RaisedButton  label="添加选项" labelStyle={styles} onClick={() => {this.addOptions(optionList)}}/>
         </div>
         <div>
-          <div className='button add-vote-button-submit'>
-            <RaisedButton label="提交" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
-          </div>
+            <div className='button add-vote-button-save'>
+            <RaisedButton label="保存" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
+        </div>
           <div className='button add-vote-button-back'>
             <RaisedButton label="返回" labelStyle={styles} fullWidth={true} onClick={this.goBack}/>
           </div>

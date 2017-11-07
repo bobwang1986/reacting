@@ -28,6 +28,11 @@ class Home extends Component {
     this.goToAdd = this.goToAdd.bind(this);
     this.getReport = this.getReport.bind(this);
     this.editVote = this.editVote.bind(this);
+    this.releaseVote = this.releaseVote.bind(this);
+    this.delVote = this.delVote.bind(this);
+    this.state = {
+      publish: true
+    }
   }
   logout = ()=>{
     this.props.history.push("/login")
@@ -48,7 +53,12 @@ class Home extends Component {
     this.props.votelistID(id,this.props.voteList);
     this.props.history.push("/editVotes")
   }
-
+  releaseVote(id){
+    this.props.releaseVote(id, this.props);
+  }
+  delVote(id){
+    this.props.delVote(id, this.props);
+  }
   componentDidMount() {
       this.props.getVoteList()
   }
@@ -91,9 +101,13 @@ class Home extends Component {
                                 <TableRowColumn>{key+1}</TableRowColumn>
                                 <TableRowColumn>{item.title}</TableRowColumn>
                                 <TableRowColumn>{item.voters.length}</TableRowColumn>
-                                <TableRowColumn>
+                                <TableRowColumn className="home-option-w">
                                   <FlatButton label="Result" primary={true} onClick={()=>this.getReport(item._id)}/>
-                                  <FlatButton label="Edit" primary={true} onClick={()=>this.editVote(item._id)}/>
+                                  <div className={item.status ? "vote-btn-hide" : "vote-btn-show" }>
+                                    <FlatButton label="Edit" primary={true} onClick={()=>this.editVote(item._id)}/>
+                                    <FlatButton label="Publish" primary={true} onClick={()=>this.releaseVote(item._id)}/>
+                                  </div>
+                                  <FlatButton label="Del" primary={true} onClick={()=>this.delVote(item._id)}/>
                                 </TableRowColumn>
                             </TableRow>
                     })
@@ -101,9 +115,6 @@ class Home extends Component {
               </TableBody>
             </Table>
           </div>
-        </div>
-        <div className='button'>
-          <RaisedButton label="back" labelStyle={styles} fullWidth={true} onClick={this.logout}/>
         </div>
       </div>
     );
