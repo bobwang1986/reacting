@@ -14,6 +14,9 @@
 .home-content{
   padding:20px;
 }
+.home-content button span{
+  font-size: 12px!important
+}
 
 .vote-btn-show{
   float: left

@@ -1,8 +1,12 @@
 .add-vote-container{
   padding:20px 100px;
+  font-size: 12px!important
 }
 .add-vote-container .button{
   margin-top: 10px;
+}
+.add-vote-container button span{
+  font-size: 12px!important
 }
 .vote-option li{
   float: left;

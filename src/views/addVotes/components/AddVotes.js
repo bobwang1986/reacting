@@ -94,7 +94,7 @@ class AddVotes extends Component {
     const optionList = this.state.item;
     return (
       <div className='add-vote-container'>
-        <h2>添加个投票</h2>
+        <h2>添加投票</h2>
         <TextField
           hintText="请输入投票内容"
           floatingLabelText="投票内容"
