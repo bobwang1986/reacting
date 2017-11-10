@@ -4,10 +4,8 @@ import Report from '../components/Report'
 import * as report from '../state/action'
 
 const mapStateToProps = (state) => {
-  console.log("++++++++++++++++++++++++++++++++++++");
-  console.log(state);
   return {
-    voteID: state.home.payload
+    reportVote: state.home.payload
   }
 }
 

@@ -37,7 +37,7 @@ class editVotes extends Component {
     })
     console.log(arr);
     const data = {
-      "_id": this.props.voteID.voteID,
+      "_id": this.props.reportVote._id,
       "title": this.refs.title.getValue(),
       "type": this.state.value,
       "items": arr
@@ -87,27 +87,20 @@ class editVotes extends Component {
   }
 
   componentDidMount() {
-    const {voteID, voteList} = this.props.voteID;
-    console.log(this.props.voteID);
+    const voteList = this.props.reportVote;
     let optionList = [];
-    voteList.map((item, key) => {
-      if(item._id === voteID){
-        console.log(item.status)
-        item.items.map((v, i) => {
+        voteList.items.map((v, i) => {
           optionList.push({"id":`item${i+1}`,"value": v.description})
         })
         this.setState((oldState) => {
           return {
-            value: item.type,
-            title: item.title,
-            status: item.status,
+            value: voteList.type,
+            title: voteList.title,
+            status: voteList.status,
             item: optionList,
             idValue: optionList.length
           };
         });
-        console.log(optionList)
-      }
-    })
   }
 
   render() {

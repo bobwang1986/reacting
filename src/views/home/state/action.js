@@ -20,13 +20,23 @@ export const getVoteList = () => {
 } 
 
 export const VOTELIST_ID = 'VOTELIST_ID';
-export const votelistID = (id,list) => {
-  const data = { 
-    voteID: id,
-    voteList: list
-  }
+export const votelistID = (id, callBack, router) => {
   return (dispatch) => {
-      dispatch({ type: VOTELIST_ID, payload: data });
+    axios(`${config.votes}/votes/${id}?populate=items.voters`,{
+      method: "GET",
+      headers: {
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVuSWQiOiJkMDVlNTY3MC04ZDFmLTQ3ZjktODVlZC04NGJmMWRiNTYzNjkiLCJzdGFmZklkIjoiYWRtaW4iLCJpYXQiOjE1MDk0NjAyODl9.zYGwk5sUnlhlQNGNxsnhmzUxfZATBAdDDrmb3yoKEpE"
+      }}).then(function (response) {
+        dispatch({ type: VOTELIST_ID, payload: response.data });
+        if(router === "result"){
+          callBack.history.push("/report")
+        }else if( router === "edit"){
+          callBack.history.push("/editVotes")
+        }
+        
+    }).catch(function (error) {
+      console.log(error);
+    });
   }
 }  
 

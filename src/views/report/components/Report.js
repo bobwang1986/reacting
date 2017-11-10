@@ -22,23 +22,16 @@ class Report extends Component {
     this.props.history.push("/home")
   }
   componentDidMount() {
-    const {voteID, voteList} = this.props.voteID;
+    const reportVote = this.props.reportVote;
     let des = [];
-    let title;
+    let title = reportVote.title;
     let voters=[];
-    //let votersCount;
-    voteList.map((item, key) => {
-      if(item._id === voteID){
-        console.log(item);
-        title = item.title;
         //votersCount = item.votersCount;
-        item.items.map((v, i) => {
+        reportVote.items.map((v, i) => {
           console.log(v.voters.length);
           voters.push(v.voters.length)
           des.push(v.description)
         })
-      }
-    })
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById('main'));
     // 绘制图表

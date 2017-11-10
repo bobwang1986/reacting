@@ -43,15 +43,15 @@ class Home extends Component {
   goToAdd = ()=>{
     this.props.history.push("/addVotes")
   }
-  getReport = (id)=>{
-    this.props.votelistID(id,this.props.voteList);
-    this.props.history.push("/report")
+  getReport = (id,router)=>{
+    this.props.votelistID(id,this.props,router);
+    //this.props.history.push("/report")
   }
   handleChange = (event, index, value) => this.setState({value});
 
-  editVote(id){
-    this.props.votelistID(id,this.props.voteList);
-    this.props.history.push("/editVotes")
+  editVote(id,router){
+    this.props.votelistID(id,this.props,router);
+    //this.props.history.push("/editVotes")
   }
   releaseVote(id){
     this.props.releaseVote(id, this.props);
@@ -105,9 +105,9 @@ class Home extends Component {
                                 <TableRowColumn>{item.title}</TableRowColumn>
                                 <TableRowColumn>{item.voters.length}</TableRowColumn>
                                 <TableRowColumn className="home-option-w">
-                                  <FlatButton label="查询结果" primary={true} onClick={()=>this.getReport(item._id)}/>
+                                  <FlatButton label="查询结果" primary={true} onClick={()=>this.getReport(item._id,"result")}/>
                                   <div className={item.status ? "vote-btn-hide" : "vote-btn-show" }>
-                                    <FlatButton label="编辑" primary={true} onClick={()=>this.editVote(item._id)}/>
+                                    <FlatButton label="编辑" primary={true} onClick={()=>this.editVote(item._id, "edit")}/>
                                     <FlatButton label="发布" primary={true} onClick={()=>this.releaseVote(item._id)}/>
                                   </div>
                                   <FlatButton label="删除" primary={true} onClick={()=>this.delVote(item._id)}/>

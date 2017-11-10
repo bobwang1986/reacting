@@ -6,7 +6,7 @@ import * as edits from '../state/action'
 
 const mapStateToProps = (state) => {
   return {
-    voteID: state.home.payload
+    reportVote: state.home.payload
   }
 }
 
