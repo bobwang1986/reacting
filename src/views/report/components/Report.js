@@ -26,12 +26,19 @@ class Report extends Component {
     let des = [];
     let title = reportVote.title;
     let voters=[];
+    let voterName=[];
         //votersCount = item.votersCount;
         reportVote.items.map((v, i) => {
           console.log(v.voters.length);
           voters.push(v.voters.length)
-          des.push(v.description)
+          des.push(v.description);
+          if(v.voters.length != 0){
+            v.voters.map((value, i) => {
+                voterName.push(value.voterInfo.staffId)
+            })
+          }
         })
+    
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById('main'));
     // 绘制图表
@@ -60,7 +67,7 @@ class Report extends Component {
       xAxis : [
           {
               type : 'value',
-              boundaryGap : [0, 1]
+              boundaryGap : [0, 100]
           }
       ],
       yAxis : [
@@ -85,7 +92,7 @@ class Report extends Component {
   render() {
     return (
       <div className='add-vote-container'>
-        <div id="main" style={{ width: 800, height: 400 }}></div>
+        <div id="main" style={{ width: 1000, height: 300 }}></div>
         <RaisedButton label="back" labelStyle={styles} fullWidth={true} onClick={this.gotHome}/>
       </div>
     );
