@@ -19,7 +19,7 @@ export const addVote = (data, router) => {
       },
       data: data
     }).then(function(response){
-      console.log(response.data);
+      console.log(response);
       router.history.push("/home")
     })
     .catch(function(err){
