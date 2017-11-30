@@ -52,11 +52,11 @@ class Login extends Component {
             </div>
             <div className="QR-code">
                 <div className="img">
-                  <img src={andriod} />
+                  <img src={andriod} alt="安卓"/>
                   <h3>Andriod</h3>
                 </div>
                 <div className="fr img">
-                   <img src={ios} />
+                   <img src={ios} alt="ios"/>
                    <h3>ios</h3>
                 </div>
 

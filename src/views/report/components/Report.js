@@ -32,7 +32,7 @@ class Report extends Component {
           console.log(v.voters.length);
           voters.push(v.voters.length)
           des.push(v.description);
-          if(v.voters.length != 0){
+          if(v.voters.length !== 0){
             v.voters.map((value, i) => {
                 voterName.push(value.voterInfo.staffId)
             })
