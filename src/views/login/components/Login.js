@@ -5,7 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
-
+import ios from '../../../themes/images/ios.jpg'
+import andriod from '../../../themes/images/andriod.png'
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -22,8 +23,8 @@ class Login extends Component {
   }
   render() {
     const paperStyle = {
-      height: 300,
-      width: 300,
+      height: 420,
+      width: 340,
       margin: 20,
       display: 'inline-block',
       padding:20
@@ -48,6 +49,17 @@ class Login extends Component {
             />
             <div className='button'>
               <RaisedButton label="登录" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
+            </div>
+            <div className="QR-code">
+                <div className="img">
+                  <img src={andriod} alt="安卓"/>
+                  <h3>Andriod</h3>
+                </div>
+                <div className="fr img">
+                   <img src={ios} alt="ios"/>
+                   <h3>ios</h3>
+                </div>
+
             </div>
           </Paper>
         </div>

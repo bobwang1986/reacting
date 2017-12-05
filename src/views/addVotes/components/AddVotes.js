@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import Checkbox from 'material-ui/Checkbox';
+//import Checkbox from 'material-ui/Checkbox';
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
@@ -31,7 +31,7 @@ class AddVotes extends Component {
   goToHome() {
     let arr =[];
     this.state.item.map((value) =>{
-        if(this.refs[value.id].getValue()!=""){
+        if(this.refs[value.id].getValue() !== ""){
           arr.push(this.refs[value.id].getValue())
         }
     })
