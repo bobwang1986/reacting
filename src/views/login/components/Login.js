@@ -27,14 +27,14 @@ class Login extends Component {
       <div className='login-container'>
         <div className='login-box'>
           <Paper style={paperStyle} zDepth={5}>
-            <h2>RM小助手管理端</h2>
+            <h2>极简股票交易系统</h2>
             <TextField
-              hintText="用户名"
+              hintText="资金账号"
               fullWidth={true}
               style={styles}
             />
             <TextField
-              hintText="密码"
+              hintText="交易密码"
               type="password"
               fullWidth={true}
               style={styles}
