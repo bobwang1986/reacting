@@ -12,7 +12,12 @@ class Login extends Component {
     this.goToHome = this.goToHome.bind(this);
   }
   goToHome = ()=>{
-    this.props.history.push("/home")
+    const userInfo = {
+      name: this.refs.name.getValue(),
+      password: this.refs.password.getValue()
+    };
+    this.props.login(userInfo);    
+    //this.props.history.push("/home")
   }
   render() {
     const { userName, password, fn,payload } = this.props;
@@ -32,12 +37,14 @@ class Login extends Component {
               hintText="资金账号"
               fullWidth={true}
               style={styles}
+              ref="name"
             />
             <TextField
               hintText="交易密码"
               type="password"
               fullWidth={true}
               style={styles}
+              ref="password"
             />
             <div className='button'>
               <RaisedButton label="登录" labelStyle={styles} fullWidth={true} onClick={this.goToHome}/>
