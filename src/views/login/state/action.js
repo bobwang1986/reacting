@@ -23,6 +23,7 @@ export const submit = (userInfo, router) => {
    return (dispatch) => {
      axios.post('http://localhost:8080/login',userInfo).then(function (response) {
        console.log(response);
+       alert(JSON.stringify(response))
        //dispatch({type: ON_SUBMIMT, payload: response.data})
      }).catch(function (error) {
        console.log(error);

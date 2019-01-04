@@ -7,7 +7,7 @@ import Checkbox from 'material-ui/Checkbox';
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
-class AddVotes extends Component {
+class Sell extends Component {
   constructor(props) {
     super(props);
     // This binding is necessary to make `this` work in the callback
@@ -16,13 +16,6 @@ class AddVotes extends Component {
       value: 0,
       checked:false
     };
-    this.optionStyles = {
-      display:'inline-block',
-      width:36,
-      lineHeight:48,
-      height:48,
-      top: 11
-    }
   }
   goToHome = () => {
     this.props.history.push("/trade")
@@ -41,7 +34,7 @@ class AddVotes extends Component {
   render() {
     return (
       <div className='add-vote-container'>
-        <h2>买入</h2>
+        <h2>卖出</h2>
         <TextField
           hintText="请输入股票代码"
           floatingLabelText="股票代码"
@@ -50,15 +43,15 @@ class AddVotes extends Component {
           fullWidth={true}
         />
         <TextField
-          hintText="请输入买入价格"
-          floatingLabelText="买入价格"
+          hintText="请输入卖出价格"
+          floatingLabelText="卖出价格"
           multiLine={true}
           rows={1}
           fullWidth={true}
         />
         <TextField
-          hintText="请输入购买数量"
-          floatingLabelText="购买数量"
+          hintText="请输入卖出数量"
+          floatingLabelText="卖出数量"
           multiLine={true}
           rows={1}
           fullWidth={true}
@@ -66,7 +59,7 @@ class AddVotes extends Component {
 
         <div>
           <div className='button add-vote-button-submit'>
-            <RaisedButton label="买入" labelStyle={styles}  onClick={this.goToHome}/>
+            <RaisedButton label="卖出" labelStyle={styles}  onClick={this.goToHome}/>
             &nbsp;&nbsp;
             <RaisedButton label="返回" labelStyle={styles}  onClick={this.goToHome}/>
           </div>
@@ -76,4 +69,4 @@ class AddVotes extends Component {
   }
 }
 
-export default AddVotes;
+export default Sell;

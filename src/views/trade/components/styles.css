@@ -1,0 +1,27 @@
+.trade-title{
+  margin-left: 20px;
+}
+.trade-search{
+  margin-top: 30px;
+}
+.trade-search .button{
+  margin-left: 20px;
+}
+.trade-table{
+  margin-top: 40px;
+}
+.trade-paper div{
+  width:20%;
+  margin-top:30px;
+  text-align: center;
+  line-height: 56px;
+}
+.trade-paper-opt div{
+  width:50%;
+  cursor: pointer;
+  line-height: 100px;
+}
+
+.trade-button{
+  margin-top: 30px;
+}

@@ -41,80 +41,96 @@ class Home extends Component {
   getReport = ()=>{
     this.props.history.push("/report")
   }
+  goToTrade = ()=>{
+    this.props.history.push("/trade")
+  }
   handleChange = (event, index, value) => this.setState({value});
   render() {
+    const paperStyle = {
+      display: 'inline-block',
+      padding:20,
+      height:150
+    };
     return (
       <div className='home-container'>
         <Toolbar>
           <ToolbarGroup firstChild={true}>
-            <h2 className='home-title'>RM小助手管理端</h2>
+            <h2 className='home-title'>极简股票交易系统</h2>
           </ToolbarGroup>
           <ToolbarGroup>
             <RaisedButton label="退出" labelStyle={styles} onClick={this.logout}/>
           </ToolbarGroup>
         </Toolbar>
         <div className='home-content'>
-        <div className='home-search'>
-          <TextField hintText="输入关键字进行查询"/>
-          <span className='button'>
-            <RaisedButton label="查询" labelStyle={styles} onClick={this.search}/>
-          </span>
-        </div>
-        <div className='home-table'>
-          <RaisedButton label="新增投票" labelStyle={styles} onClick={this.goToAdd}/>
-          <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderColumn>ID</TableHeaderColumn>
-                  <TableHeaderColumn>投票内容</TableHeaderColumn>
-                  <TableHeaderColumn>操作</TableHeaderColumn>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableRowColumn>1</TableRowColumn>
-                  <TableRowColumn>你了解全栈开发吗</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>2</TableRowColumn>
-                  <TableRowColumn>你了解全栈开发吗</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>3</TableRowColumn>
-                  <TableRowColumn>你了解做饭技巧吗</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>4</TableRowColumn>
-                  <TableRowColumn>你愿意走怎样的发展路线</TableRowColumn>
-                  <TableRowColumn>
-                    <RaisedButton label="投票结果" labelStyle={styles} onClick={this.getReport}/>
-                    &nbsp;
-                    <RaisedButton label="编辑" labelStyle={styles}/>
-                  </TableRowColumn>
-                </TableRow>
-              </TableBody>
-            </Table>
+          <div className="home-paper">
+            <Paper style={paperStyle}>
+              <h3>首页</h3>
+            </Paper>
+            <Paper style={paperStyle} onClick={this.goToTrade}>
+              <h3>交易</h3>
+            </Paper>
+            <Paper style={paperStyle}>
+              <h3>自选</h3>
+            </Paper>
+            <Paper style={paperStyle}>
+              <h3>行情</h3>
+            </Paper>
+            <Paper style={paperStyle}>
+              <h3>资讯</h3>
+            </Paper>      
+          </div>
+          <div className='home-table'>
+            <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderColumn>股票代码</TableHeaderColumn>
+                    <TableHeaderColumn>股票名称</TableHeaderColumn>
+                    <TableHeaderColumn>最新价格</TableHeaderColumn>
+                    <TableHeaderColumn>涨跌幅</TableHeaderColumn>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableRowColumn>000001</TableRowColumn>
+                    <TableRowColumn>股票1</TableRowColumn>
+                    <TableRowColumn>100</TableRowColumn>
+                    <TableRowColumn>+1%</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>000001</TableRowColumn>
+                    <TableRowColumn>股票1</TableRowColumn>
+                    <TableRowColumn>100</TableRowColumn>
+                    <TableRowColumn>+1%</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>000001</TableRowColumn>
+                    <TableRowColumn>股票1</TableRowColumn>
+                    <TableRowColumn>100</TableRowColumn>
+                    <TableRowColumn>+1%</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>000001</TableRowColumn>
+                    <TableRowColumn>股票1</TableRowColumn>
+                    <TableRowColumn>100</TableRowColumn>
+                    <TableRowColumn>+1%</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>000001</TableRowColumn>
+                    <TableRowColumn>股票1</TableRowColumn>
+                    <TableRowColumn>100</TableRowColumn>
+                    <TableRowColumn>+1%</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>000001</TableRowColumn>
+                    <TableRowColumn>股票1</TableRowColumn>
+                    <TableRowColumn>100</TableRowColumn>
+                    <TableRowColumn>+1%</TableRowColumn>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
           </div>
         </div>
-        <div className='button'>
-          <RaisedButton label="back" labelStyle={styles} fullWidth={true} onClick={this.logout}/>
-        </div>
-      </div>
     );
   }
 }

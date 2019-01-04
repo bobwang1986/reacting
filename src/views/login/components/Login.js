@@ -16,8 +16,8 @@ class Login extends Component {
       name: this.refs.name.getValue(),
       password: this.refs.password.getValue()
     };
-    this.props.login(userInfo);    
-    //this.props.history.push("/home")
+    this.props.login(userInfo);
+    this.props.history.push("/home")
   }
   render() {
     const { userName, password, fn,payload } = this.props;

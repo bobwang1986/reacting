@@ -7,7 +7,7 @@ import Checkbox from 'material-ui/Checkbox';
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
-class AddVotes extends Component {
+class Buy extends Component {
   constructor(props) {
     super(props);
     // This binding is necessary to make `this` work in the callback
@@ -16,13 +16,6 @@ class AddVotes extends Component {
       value: 0,
       checked:false
     };
-    this.optionStyles = {
-      display:'inline-block',
-      width:36,
-      lineHeight:48,
-      height:48,
-      top: 11
-    }
   }
   goToHome = () => {
     this.props.history.push("/trade")
@@ -76,4 +69,4 @@ class AddVotes extends Component {
   }
 }
 
-export default AddVotes;
+export default Buy;
