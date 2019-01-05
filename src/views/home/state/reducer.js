@@ -1,11 +1,11 @@
-import { ON_SUBMIMT } from './action'
-const initialState = {userName: 'leo', password: '123456'}
-const login = (state = initialState, action) => {
+import { ON_GETSTOCKLIST } from './action'
+const initialState = {stockList: []}
+const home = (state = initialState, action) => {
     switch (action.type) {
-        case ON_SUBMIMT:
-            return {...state, payload:action.payload}
+        case ON_GETSTOCKLIST:
+            return {...state, stockList:action.stockList}
         default:
             return state
     }
 }
-export default login
+export default home

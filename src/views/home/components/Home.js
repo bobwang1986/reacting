@@ -20,37 +20,24 @@ import {
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
-class Home extends Component {
+class HomeComponent extends Component {
   constructor(props) {
     super(props);
-    // This binding is necessary to make `this` work in the callback
-    this.logout = this.logout.bind(this);
-    this.search = this.search.bind(this);
-    this.goToAdd = this.goToAdd.bind(this);
-    this.getReport = this.getReport.bind(this);
   }
-  logout = ()=>{
-    this.props.history.push("/login")
+
+  componentDidMount = function(){
+    let isLogonSuccess = this.props.isLogonSuccess
   }
-  search = ()=>{
-    alert('clicked');
-  }
-  goToAdd = ()=>{
-    this.props.history.push("/addVotes")
-  }
-  getReport = ()=>{
-    this.props.history.push("/report")
-  }
-  goToTrade = ()=>{
-    this.props.history.push("/trade")
-  }
+
   handleChange = (event, index, value) => this.setState({value});
+
   render() {
     const paperStyle = {
       display: 'inline-block',
       padding:20,
       height:150
     };
+    const {stockList} = this.props
     return (
       <div className='home-container'>
         <Toolbar>
@@ -58,26 +45,23 @@ class Home extends Component {
             <h2 className='home-title'>极简股票交易系统</h2>
           </ToolbarGroup>
           <ToolbarGroup>
-            <RaisedButton label="退出" labelStyle={styles} onClick={this.logout}/>
+            <RaisedButton label="退出" labelStyle={styles} onClick={this.props.logout}/>
           </ToolbarGroup>
         </Toolbar>
         <div className='home-content'>
           <div className="home-paper">
-            <Paper style={paperStyle}>
-              <h3>首页</h3>
-            </Paper>
-            <Paper style={paperStyle} onClick={this.goToTrade}>
+            <Paper style={paperStyle} onClick={this.props.goToTrade}>
               <h3>交易</h3>
             </Paper>
             <Paper style={paperStyle}>
-              <h3>自选</h3>
+              <h3>自选(维护中)</h3>
             </Paper>
             <Paper style={paperStyle}>
-              <h3>行情</h3>
+              <h3>行情(维护中)</h3>
             </Paper>
             <Paper style={paperStyle}>
-              <h3>资讯</h3>
-            </Paper>      
+              <h3>资讯(维护中)</h3>
+            </Paper>
           </div>
           <div className='home-table'>
             <Table>
@@ -90,42 +74,18 @@ class Home extends Component {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  <TableRow>
-                    <TableRowColumn>000001</TableRowColumn>
-                    <TableRowColumn>股票1</TableRowColumn>
-                    <TableRowColumn>100</TableRowColumn>
-                    <TableRowColumn>+1%</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>000001</TableRowColumn>
-                    <TableRowColumn>股票1</TableRowColumn>
-                    <TableRowColumn>100</TableRowColumn>
-                    <TableRowColumn>+1%</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>000001</TableRowColumn>
-                    <TableRowColumn>股票1</TableRowColumn>
-                    <TableRowColumn>100</TableRowColumn>
-                    <TableRowColumn>+1%</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>000001</TableRowColumn>
-                    <TableRowColumn>股票1</TableRowColumn>
-                    <TableRowColumn>100</TableRowColumn>
-                    <TableRowColumn>+1%</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>000001</TableRowColumn>
-                    <TableRowColumn>股票1</TableRowColumn>
-                    <TableRowColumn>100</TableRowColumn>
-                    <TableRowColumn>+1%</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>000001</TableRowColumn>
-                    <TableRowColumn>股票1</TableRowColumn>
-                    <TableRowColumn>100</TableRowColumn>
-                    <TableRowColumn>+1%</TableRowColumn>
-                  </TableRow>
+                  {
+                    stockList.map((stock,index)=>{
+                        return (
+                          <TableRow>
+                            <TableRowColumn>{stock.code}</TableRowColumn>
+                            <TableRowColumn>{stock.name}</TableRowColumn>
+                            <TableRowColumn>{stock.price}</TableRowColumn>
+                            <TableRowColumn>+1%</TableRowColumn>
+                          </TableRow>
+                        )
+                    })
+                  }
                 </TableBody>
               </Table>
             </div>
@@ -135,4 +95,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomeComponent;

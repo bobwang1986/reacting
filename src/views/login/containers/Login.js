@@ -7,7 +7,7 @@ import * as logon from '../state/action'
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    loginResult: state.login.payload
+    isLogonSuccess: state.login.isLogonSuccess
   }
 }
 

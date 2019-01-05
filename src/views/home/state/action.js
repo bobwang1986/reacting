@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-export const ON_SUBMIMT = 'ON_SUBMIMT';
+export const ON_GETSTOCKLIST = 'ON_GETSTOCKLIST';
 
-export const submit = () => {
+ export const getStockList = (params, router) => {
   return (dispatch) => {
-    axios.get('http://localhost:3000/user').then(function (response) {
-      console.log(response);
-      dispatch({type: ON_SUBMIMT, payload: response.data})
+    axios.get('http://localhost:8080/stock').then(function (response) {
+      dispatch({type: ON_GETSTOCKLIST, stockList: response.data.data})
     }).catch(function (error) {
       console.log(error);
     });

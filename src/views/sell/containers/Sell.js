@@ -1,24 +1,51 @@
-//import { bindActionCreators } from 'redux'
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Sell from '../components/Sell'
-import { submit } from '../state/action'
+import SellComponent from '../components/Sell'
+import * as sell from '../state/action'
 
 
-const mapStateToProps = (state) => {
-  return {
-    // userName: state.login.userName,
-    // password: state.login.password,
-    // payload: state.login.payload
+class Sell extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+       isSellDeal:this.props.isSellDeal
+    }
+  }
+
+  logout = ()=>{
+    this.props.history.push("/login")
+  }
+
+  back = ()=>{
+    this.props.history.push("/trade")
+  }
+
+  sell = (params) => {
+    this.props.sellStock(params,this.props.history)
+  }
+
+  render(){
+    return (
+      <div>
+        <SellComponent
+          logout = {this.logout}
+          back = {this.back}
+          sell = {this.sell}
+        />
+      </div>
+    )
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    // fn: {
-    //   onFetch: () => {
-    //     dispatch(submit());
-    //   }
-    // }
+const mapStateToProps = (state) => {
+  return {
+    isSellDeal:state.sell.isSellDeal
   }
-)
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(sell, dispatch)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sell)

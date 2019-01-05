@@ -1,14 +1,17 @@
 import axios from 'axios';
 
-export const ON_SUBMIMT = 'ON_SUBMIMT';
+export const ON_BUYSTOCK = 'ON_BUYSTOCK';
 
-export const submit = () => {
-  return (dispatch) => {
-    axios.get('http://localhost:3000/user').then(function (response) {
-      console.log(response);
-      dispatch({type: ON_SUBMIMT, payload: response.data})
-    }).catch(function (error) {
-      console.log(error);
-    });
-  }
- }
+export const buyStock = (params, router) => {
+ return (dispatch) => {
+     axios.post('http://localhost:8080/tradeInfo/buy',params).then(function (response) {
+       if(response.data.success){
+         router.push('/trade')
+       }
+       alert(response.data.message)
+       dispatch({type: ON_BUYSTOCK, isBuyDeal: response.data.success})
+     }).catch(function (error) {
+       console.log(error);
+     });
+   }
+}

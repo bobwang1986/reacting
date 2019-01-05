@@ -11,13 +11,14 @@ class Login extends Component {
     // This binding is necessary to make `this` work in the callback
     this.goToHome = this.goToHome.bind(this);
   }
+
   goToHome = ()=>{
     const userInfo = {
       name: this.refs.name.getValue(),
       password: this.refs.password.getValue()
     };
-    this.props.login(userInfo);
-    this.props.history.push("/home")
+    this.props.login(userInfo, this.props.history);
+    //this.props.history.push("/home")
   }
   render() {
     const { userName, password, fn,payload } = this.props;

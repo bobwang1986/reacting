@@ -7,30 +7,23 @@ import Checkbox from 'material-ui/Checkbox';
 import styles from '../../../themes/commonUIStyle'
 import './styles.css'
 
-class Sell extends Component {
+class SellComponent extends Component {
   constructor(props) {
     super(props);
-    // This binding is necessary to make `this` work in the callback
-    this.goToHome = this.goToHome.bind(this);
-    this.state = {
-      value: 0,
-      checked:false
-    };
   }
-  goToHome = () => {
-    this.props.history.push("/trade")
-  }
-  handleChange = (event, index, value) => this.setState({value});
-  addOption = () => {
 
+  goSell = ()=>{
+    const params = {
+      code: this.refs.code.getValue(),
+      currentPrice: this.refs.price.getValue(),
+      tradePrice: this.refs.price.getValue(),
+      tradeAmount: this.refs.amount.getValue(),
+      userId:"admin",
+      name:"股票8"
+    };
+    this.props.sell(params);
   }
-  updateCheck() {
-    this.setState((oldState) => {
-      return {
-        checked: !oldState.checked,
-      };
-    });
-  }
+
   render() {
     return (
       <div className='add-vote-container'>
@@ -41,6 +34,7 @@ class Sell extends Component {
           multiLine={true}
           rows={1}
           fullWidth={true}
+          ref="code"
         />
         <TextField
           hintText="请输入卖出价格"
@@ -48,6 +42,7 @@ class Sell extends Component {
           multiLine={true}
           rows={1}
           fullWidth={true}
+          ref="price"
         />
         <TextField
           hintText="请输入卖出数量"
@@ -55,13 +50,14 @@ class Sell extends Component {
           multiLine={true}
           rows={1}
           fullWidth={true}
+          ref="amount"
         />
 
         <div>
           <div className='button add-vote-button-submit'>
-            <RaisedButton label="卖出" labelStyle={styles}  onClick={this.goToHome}/>
+            <RaisedButton label="卖出" labelStyle={styles}  onClick={this.goSell}/>
             &nbsp;&nbsp;
-            <RaisedButton label="返回" labelStyle={styles}  onClick={this.goToHome}/>
+            <RaisedButton label="返回" labelStyle={styles}  onClick={this.props.back}/>
           </div>
         </div>
       </div>
@@ -69,4 +65,4 @@ class Sell extends Component {
   }
 }
 
-export default Sell;
+export default SellComponent;
