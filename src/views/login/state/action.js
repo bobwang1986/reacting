@@ -5,7 +5,7 @@ export const ON_SUBMIMT = 'ON_SUBMIMT';
 
 export const login = (userInfo, router) => {
  return (dispatch) => {
-   axios.post('http://localhost:8080/login',userInfo).then(function (response) {
+   axios.post(config.host+'/login',userInfo).then(function (response) {
      if(response.data.success){
         router.push("/home")
      }else{

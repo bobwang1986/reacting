@@ -1,10 +1,10 @@
 import axios from 'axios';
-
+import config from '../../../config/config'
 export const ON_SELLSTOCK = 'ON_SELLSTOCK';
 
 export const sellStock = (params, router) => {
  return (dispatch) => {
-     axios.post('http://localhost:8080/tradeInfo/sell',params).then(function (response) {
+     axios.post(config.host+'/tradeInfo/sell',params).then(function (response) {
        if(response.data.success){
          router.push('/trade')
        }

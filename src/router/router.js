@@ -15,8 +15,8 @@ import Trade from '../views/trade/'
 const Routers = () => (
   <Router>
     <div>
-      <Route exact path="/" component={App}></Route>
-      <Route path="/login" component={Login}></Route>
+      <Route exact path="/" component={Login}></Route>
+      <Route exact path="/login" component={Login}></Route>
       <Route path="/home" component={Home}></Route>
       <Route path="/trade" component={Trade}></Route>
       <Route path="/AddVotes" component={AddVotes}></Route>
