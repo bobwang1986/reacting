@@ -1,5 +1,6 @@
 const config = {
-  host:"http://132.232.185.59:8080"
+  host:"http://localhost:8080",
+  isDummy:true
 }
 
 export default config

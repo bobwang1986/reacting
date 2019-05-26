@@ -1,0 +1,16 @@
+{
+    "data":{
+        "success":true,
+        "message":"交易成功",
+        "data":[
+            {   
+                "code":"000001",
+                "name":"股票1",
+                "currentPrice":"1",
+                "tradePrice":"2",
+                "userId":"admin",
+                "tradeAmount":"1000"
+            }
+        ]
+    }
+}
